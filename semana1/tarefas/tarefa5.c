@@ -42,9 +42,20 @@ int main(void) {
           printf("ERRO -- pthread_join\n");
     }
     //imprimir o vetor 
-    for(int i=0; i<TAMANHO; i++) 
-       printf("%f ", vetor[i]);
-
+    int verifica = 0;
+    float aux;
+    for(int i=0; i<TAMANHO; i++) {
+        aux=i+1;       
+        if(aux*aux!=vetor[i]){//verifica se o valor do vetor modificado é o quadrado do vetor original
+            verifica=1;
+                printf("erro na posição, %d", i);
+            break;
+        }
+}
+    if(verifica==1)
+        printf("\nteste falhou\n");
+    else
+        printf("\nsucesso no teste\n");
 
     return 0;
 }
