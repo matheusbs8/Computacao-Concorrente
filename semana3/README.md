@@ -6,7 +6,6 @@ Análise de desempenho e cálculo da aceleração do programa de solução seque
 * [Informações sobre o hardware](#informações-sobre-o-hardware)
 * [Estratégia de Divisão das threads](#estrategia-de-divisao-das-threads)
 * [Como rodar o programa](#como-rodar-o-programa)
-* [Tempos de execução](#tempos-de-execução)
 * [Cálculo da aceleração](#cálculo-da-aceleração)
 
 ## Informações sobre o hardware
@@ -26,33 +25,6 @@ $ gcc lab3.c -o maior-menor -Wall -lpthread
 $ ./maior-menor <dimensão do vetor> <número de threads>
 
 
-## Tempos de execução
-:warning: Ao realizar testes para verificar o tempo de execução do programa com os inputs dados, percebi que o tempo sofre pequenas alterações de acordo com o intervalo dado.
-
-### Dimensão 10<sup>5</sup>
-| Solução | Tempo de execução |
-| --- | --- |
-| Sequencial | ?s |                                                                                                                                                                                 
-| 1 Threads | ?s |
-| 2 Threads | ?s |
-| 4 Threads | ?s |
-
-### Dimensão 10<sup>7</sup>
-| Solução | Tempo de execução |
-| --- | --- |
-| Sequencial | ?s |                                                                                                                                                                                 
-| 1 Threads | ?s |
-| 2 Threads | ?s |
-| 4 Threads | ?s |
-
-### Dimensão 10<sup>8</sup>
-| Solução | Tempo de execução |
-| --- | --- |
-| Sequencial | ?s |                                                                                                                                                                                 
-| 1 Threads | ?s |
-| 2 Threads | ?s |
-| 4 Threads | ?s |
-
 ## Cálculo da aceleração
 :abacus: Para realizar o cálculo da aceleração e poder estimar o ganho de desempenho, usaremos a Lei de Amdahl. O ganho de velocidade da execução é dado por: 
 T<sub>sequencial</sub> / t<sub>s</sub> + t<sub>s</sub>, onde
@@ -63,20 +35,20 @@ T<sub>sequencial</sub> / t<sub>s</sub> + t<sub>s</sub>, onde
 ### Dimensão 10<sup>5</sup>
  | Threads | Aceleração |
  | --- | --- |
-| 1 Threads | ?s |
-| 2 Threads | ?s |
-| 4 Threads | ?s |
+| 1 Threads | 0.940478 |
+| 2 Threads | 1.328333 |
+| 4 Threads | 0.718548 |
  
 ### Dimensão 10<sup>7</sup>
  | Threads | Aceleração |
  | --- | --- |
- | 1 Threads | ?s |
- | 2 Threads | ?s |
- | 4 Threads | ?s |
+ | 1 Threads | 1.013941 |
+ | 2 Threads | 2.000502 |
+ | 4 Threads | 2.241935 |
  
  ### Dimensão 10<sup>8</sup>
  | Threads | Aceleração |
  | --- | --- |
- | 1 Threads | ?s |
- | 2 Threads | ?s |
- | 4 Threads | ?s |
+ | 1 Threads | 1.053315 |
+ | 2 Threads | 2.081315 |
+ | 4 Threads | 2.363092 |
