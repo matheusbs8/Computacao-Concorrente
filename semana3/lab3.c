@@ -9,38 +9,34 @@ int nthreads; //numero de threads
 int *vetor; //vetor de entrada com dimensao dim 
 
 typedef struct{
-   int maior; 
-   int menor; 
+   long int maior; 
+   long int menor; 
 } tArgs;
 
 //fluxo das threads
 void * tarefa(void * arg) {
-    long int id = (long int) arg; //identificador da thread
-    tArgs *fator = malloc(sizeof(tArgs));
-    long int tamBloco = dim/nthreads;  //tamanho do bloco de cada thread 
-    long int ini = id * tamBloco; //elemento inicial do bloco da thread
-//  que guardarão o maior e menor valor respectivamente, de uma porção do vetor
+   long int id = (long int) arg; //identificador da thread
+   tArgs *fator = malloc(sizeof(tArgs));
+   long int tamBloco = dim/nthreads;  //tamanho do bloco de cada thread 
+   long int ini = id * tamBloco; //elemento inicial do bloco da thread
+   long int maior=vetor[ini], menor=vetor[ini];//maior e menor locais 
+//que guardarão o maior e menor valor respectivamente, de uma porção do vetor
    
-    long int fim; //elemento final(nao processado) do bloco da thread
-    if(id == nthreads-1) 
-        fim = dim;
-    else 
-        fim = ini + tamBloco; //trata o resto se houver
-
-    fator->maior=vetor[ini];//maior local 
-    fator->menor=vetor[ini];//menor local 
-    
-    //encontrar o maior e menor valor do bloco da thread
-    for(long int i=ini; i<fim; i++){
-        if(vetor[i]>fator->maior){
-            fator->maior = vetor[i];
+   long int fim; //elemento final(nao processado) do bloco da thread
+   if(id == nthreads-1) fim = dim;
+   else fim = ini + tamBloco; //trata o resto se houver
+   //encontrar o maior e menor valor do bloco da thread
+   for(long int i=ini; i<fim; i++){
+        if(vetor[i]>maior){
+            maior = vetor[i];
         }
-        if(vetor[i]<fator->menor){
-            fator->menor = vetor[i];
+        if(vetor[i]<menor){
+            menor = vetor[i];
         }
    }
      
- 
+     fator->maior=maior;
+     fator->menor=menor;
    //retorna o o maior e menor valor do bloco do vetor
    pthread_exit((void *) fator); 
 }
@@ -70,7 +66,7 @@ int main(int argc, char *argv[]) {
     for(long int i=0; i<dim; i++)
         vetor[i] = rand() % (i+1);
     
-    //método sequencial
+    //
     GET_TIME(ini);
     for(long int i=0; i<dim; i++){
         if(i==0){
@@ -124,14 +120,14 @@ int main(int argc, char *argv[]) {
     tempoC=fim-ini;
     printf("Tempo concorrente:  %lf\n", fim-ini);
 
-    //comparar os resultados
+    //exibir os resultados
 	if(maiorC==maiorS && menorS==menorC)
     		printf("os resultados são compátibeis\n");
    	else
 		printf("ERRO!!\nvalores diferentes\n");
 
       
-    printf("percentual :%lf\n", tempoS/tempoC);
+ printf("percentual :%lf\n", tempoS/tempoC);
     //libera as areas de memoria alocadas
     free(vetor);
     free(tid);
