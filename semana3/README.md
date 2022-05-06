@@ -28,12 +28,12 @@ $ ./maior-menor <dimensão do vetor> <número de threads>
 
 ## Tempos de execução
 :warning: Ao realizar testes para verificar o tempo de execução do programa com os inputs dados, percebi que o tempo sofre pequenas alterações de acordo com o intervalo dado.
-Por conta disso, todos os testes foram realizados usando como base o intervalo 100 < x<sub>i</sub> < 500.
 
 ### Dimensão 10<sup>5</sup>
 | Solução | Tempo de execução |
 | --- | --- |
 | Sequencial | ?s |                                                                                                                                                                                 
+| 1 Threads | ?s |
 | 2 Threads | ?s |
 | 4 Threads | ?s |
 
@@ -41,6 +41,7 @@ Por conta disso, todos os testes foram realizados usando como base o intervalo 1
 | Solução | Tempo de execução |
 | --- | --- |
 | Sequencial | ?s |                                                                                                                                                                                 
+| 1 Threads | ?s |
 | 2 Threads | ?s |
 | 4 Threads | ?s |
 
@@ -48,6 +49,7 @@ Por conta disso, todos os testes foram realizados usando como base o intervalo 1
 | Solução | Tempo de execução |
 | --- | --- |
 | Sequencial | ?s |                                                                                                                                                                                 
+| 1 Threads | ?s |
 | 2 Threads | ?s |
 | 4 Threads | ?s |
 
@@ -61,17 +63,20 @@ T<sub>sequencial</sub> / t<sub>s</sub> + t<sub>s</sub>, onde
 ### Dimensão 10<sup>5</sup>
  | Threads | Aceleração |
  | --- | --- |
- | 2 Threads | ?s |
- | 4 Threads | ?s |
+| 1 Threads | ?s |
+| 2 Threads | ?s |
+| 4 Threads | ?s |
  
 ### Dimensão 10<sup>7</sup>
  | Threads | Aceleração |
  | --- | --- |
+ | 1 Threads | ?s |
  | 2 Threads | ?s |
  | 4 Threads | ?s |
  
  ### Dimensão 10<sup>8</sup>
  | Threads | Aceleração |
  | --- | --- |
+ | 1 Threads | ?s |
  | 2 Threads | ?s |
  | 4 Threads | ?s |
