@@ -10,7 +10,7 @@ Análise de desempenho e cálculo da aceleração do programa de solução seque
 
 ## Informações sobre o hardware
 - Distro: Ubuntu 20.04.4 LTS
-- Nome do Modelo: Intel(R) Core(TM) i3-8145U CPU @ 2.10GHz
+- Nome do Modelo: Intel(R) Core(TM) i3-8130U CPU @ 2.10GHz
 - Arquitetura: x86_64
 
 ## Estratégia de Divisão das threads
