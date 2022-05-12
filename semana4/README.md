@@ -38,4 +38,4 @@ T<sub>sequencial</sub> / t<sub>s</sub> + t<sub>s</sub>, onde
  | --- | --- |
  | 1 Threads | não executou |
  | 2 Threads | 1.972931 |
- | 4 Threads | 2.982562 |
+ | 4 Threads | 1.982562 |
