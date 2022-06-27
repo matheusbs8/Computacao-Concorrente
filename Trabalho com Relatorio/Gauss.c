@@ -8,7 +8,9 @@ long int size_coluna;
 double *A, tempofunction=0, *Coeficientes, *Resultado, *ResultadoGauss, *ResultadoFinal;
 
 FILE *p;
-void estica_encolhe(int indice,double fator){
+
+//operação fundamental que multiplica a linha de uma matriz por um valor especificado no parametro
+void estica_encolhe(int indice, double fator){
     for(int i=0; i<size_coluna; i++)
         A[indice*size_coluna + i] *= fator;  
 }
@@ -18,6 +20,7 @@ void soma_subtracao(int i_static,int j_static, double fator){
         A[i_static*size_coluna + i] -= fator* A[j_static*size_coluna + i];  
 }
 
+//operação fundamental que troca duas linhas da matriz de lugar
 void troca(int i_static, int j_static){
     double aux;
     for(int i=0; i<size_coluna; i++){
@@ -28,6 +31,7 @@ void troca(int i_static, int j_static){
 
 }
 
+//função que percorre a coluna da matriz vasculhando se existe um possivel pivo(número diferente de 0) nela
 int encontra_pivo(int i,int j){
     int i_troca=-1;
     for(int k = i; k<size_linha; k++){
@@ -39,15 +43,13 @@ int encontra_pivo(int i,int j){
     return i_troca;  
 }
 
+
 void zerar_coluna(int i,int j){
-    // double iniF=0, fimF=0;
-    // GET_TIME(iniF);  
+ 
     for(int k = 0; k<size_linha; k++){
         if (k!=i)
             soma_subtracao(k, i, A[k*size_coluna +j]);
     }
-    // GET_TIME(fimF);
-    // tempofunction+=(fimF -iniF);
  }
 
 void  Gauss_Jordan(){
@@ -70,8 +72,7 @@ void  Gauss_Jordan(){
         if(i_atual!=i_troca)
             troca(i_atual, i_troca);
        
-        estica_encolhe(i_atual, 1.0/A[i_atual*size_coluna + j_atual]);
-        
+        estica_encolhe(i_atual, 1.0/A[i_atual*size_coluna + j_atual]);  
         zerar_coluna(i_atual, j_atual);
         
         i_atual+=1;
@@ -80,12 +81,13 @@ void  Gauss_Jordan(){
     }
 }
 
-
+//função com o papel de verificar se o resultado obtido pelo gauss jordan, é a solução do sistema
+//verifica se o resultado obtido pela multiplicação é bem póximo do que foi fornecido pelo arquivo 
 int verifica(){
     int aux = 1;
     for(int i=0; i<size_linha; i++){
        
-        if(abs(Resultado[i]-ResultadoFinal[i])>0.00000001){
+        if(abs(Resultado[i]-ResultadoFinal[i])>0.000000001){
             aux=0;
             break;
         }
@@ -93,8 +95,9 @@ int verifica(){
     return aux;
  }
 
+//função com o papel de realizar a multiplicação dos coeficientes com os valores da variáveis encontrados pelo gauss jordan
+// o reultado encontrado será comparado com o resultado enviado por arquivo
 void ResolveSistema(){
- 
     double aux=0;
     for(int i=0; i<size_linha; i++){
         
@@ -106,7 +109,7 @@ void ResolveSistema(){
     }
 }
 
-
+//função que guarda em uma matriz os coeficientes do sistema
 void separa(){
     for(int i=0; i<size_linha; i++){
         for(int j=0; j<size_coluna; j++){
