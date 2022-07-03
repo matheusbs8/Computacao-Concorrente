@@ -212,7 +212,7 @@ int main(int argc, char* argv[]){
     ResolveSistema();
     
     tempoGauss=fim-ini;
-    printf("tempo de execução: %lf\n",tempoGauss);
+    printf("tempo de execução: %lf segundos\n",tempoGauss);
    
     if(verifica())
         printf("\nresultado verificado\n");
